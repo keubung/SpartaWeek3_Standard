@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // 플레이어 본인에 관련된 부분을 가져온다
+    // 플레이어에 관련된 부분을 가져온다
     public PlayerController controller;
 
     private void Awake()

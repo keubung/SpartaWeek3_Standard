@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour
     private float camCurXRot;
     public float lookSensitivity;
     private Vector2 mouseDelta;
+    public bool canLook = true;
 
+    public Action setting;
     private Rigidbody _rigidbody;
 
     private void Awake()
@@ -45,7 +48,10 @@ public class PlayerController : MonoBehaviour
     // 따라서 FixedUpdate에서 이동을 하면 그 위치에 맞는 카메라의 움직임을 준다.
     void LateUpdate()
     {
-        CameraLook();
+        if (canLook)
+        {
+            CameraLook();
+        }
     }
 
     void Move()
@@ -87,6 +93,22 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
+    }
+
+    public void Setting(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            setting?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle?CursorLockMode.None:CursorLockMode.Locked;
+        canLook = !toggle;
     }
 
     bool IsGrounded()
