@@ -1,7 +1,7 @@
 # SpartaWeek3_Standard
  
 - 1. 입문 주차와 비교해서 입력 받는 방식의 차이와 공통점을 비교해보세요.
-     둘 모두 방향에 속도를 곱하여 이동을 하지만 입문 주차는 Send Message로 컴포넌트들에 메세지를 주는 방식이고, 숙련 주차에서는 Invoke Unity Event로 버튼 컴포넌트에서 클릭 이벤트를 주는 것 처럼 이벤트 형식으로 관리를 한다.
+     <br>둘 모두 방향에 속도를 곱하여 이동을 하지만 입문 주차는 Send Message로 컴포넌트들에 메세지를 주는 방식이고, 숙련 주차에서는 Invoke Unity Event로 버튼 컴포넌트에서 클릭 이벤트를 주는 것 처럼 이벤트 형식으로 관리를 한다.
 - 2. CharacterManager와 Player의 역할에 대해 고민해보세요.
 <br> CharacterManager.cs: 플레이어의 정보를 관리한다.
 <br> Player.cs: 플레이어에게 정보를 준다?
