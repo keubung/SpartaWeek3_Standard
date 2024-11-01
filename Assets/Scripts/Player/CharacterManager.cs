@@ -13,7 +13,7 @@ public class CharacterManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = new CharacterManager();
+                _instance = new GameObject("CharacterManager").AddComponent<CharacterManager>();
             }
             return _instance;
         }
