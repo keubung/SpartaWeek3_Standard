@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float jumpPower;
-    public Vector2 curMovementInput;
+    private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
 
     [Header("Look")]
@@ -32,9 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // 물리적 움직임을 일정한 간격으로 호출하기 때문에 사용.
@@ -46,7 +44,7 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate - Update - LastUpdate 순으로 업데이트 된다.
     // LastUpdate는 Update가 완전히 끝난 후 프레임 당 한 번 실행된다.
     // 따라서 FixedUpdate에서 이동을 하면 그 위치에 맞는 카메라의 움직임을 준다.
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (canLook)
         {
@@ -59,6 +57,8 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
+
+        _rigidbody.velocity = dir;
     }
 
     void CameraLook()
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
         for(int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 1.1f, groundLayerMask))
             {
                 return true;
             }

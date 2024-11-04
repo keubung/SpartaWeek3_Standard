@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    // 사용되는 모든 캐릭터들을 관리하는 부분을 작성
     private static CharacterManager _instance;
 
     public static CharacterManager Instance
